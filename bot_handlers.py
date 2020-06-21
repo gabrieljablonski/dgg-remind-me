@@ -31,9 +31,10 @@ def reminders(message: Message):
         diff = rt-datetime.utcnow()
         td = timedelta(seconds=diff.total_seconds())
         msg = (
-            f"{i+1}. Set on {format_datetime(tc, tz=tz)}, "
-            f"triggers in {delta_as_str(td)} "
-            f"({format_datetime(rt, tz=tz)}). Note: {r.note}"
+            f"{i+1}. ({format_datetime(rt, tz=tz)}) "
+            f"Triggers in {delta_as_str(td)}. "
+            f"Set on {format_datetime(tc, tz=tz)}. "
+            f"Note: {r.note}"
         )
         msgs.append(msg)
 
