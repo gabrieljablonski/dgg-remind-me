@@ -17,7 +17,7 @@ def delta_as_str(delta: timedelta):
     years = delta.days // 365
     months = (delta.days % 365) // 30
     days = delta.days - years*365 - months*30
-    
+
     if years:
         s.append(pluralize(years, 'year'))
     if months:
@@ -28,7 +28,7 @@ def delta_as_str(delta: timedelta):
     hours = delta.seconds // 3600
     minutes = (delta.seconds % 3600) // 60
     seconds = delta.seconds - hours*3600 - minutes*60
-    
+
     if hours:
         s.append(pluralize(hours, 'hour'))
     if minutes:

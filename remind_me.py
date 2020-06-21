@@ -12,6 +12,8 @@ extra = 'More details at github.com/gabrieljablonski/dgg-remind-me.'
 
 remind_me_bot = DGGChatBot(dgg_auth_token, extra_help=extra)
 
+
+# watch out for cirular imports
 import chat_handlers
 import command_handlers
 from models import setup_db

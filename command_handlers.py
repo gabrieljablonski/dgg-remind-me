@@ -49,7 +49,9 @@ def time_zone(tz: int = maxsize, message: Message = None):
     action = 'is currently'
     if tz != maxsize:
         if tz < -12 or tz > 12:
-            raise InvalidCommandArgumentsError('<tz> should be between -12 and 12')
+            raise InvalidCommandArgumentsError(
+                '<tz> should be between -12 and 12'
+            )
         user.time_zone = tz
         session.commit()
         action = 'was set to'
@@ -76,9 +78,12 @@ def remind_me(expr, note: Optional[str], message: Message):
     user = get_or_create_user(message.user.nick)
 
     if len(user.reminders) > user.MAX_REMINDERS:
-        raise Exception('you can have up to {user.MAX_REMINDERS} at a time. use "!delete <n>" to delete a reminder')
+        raise Exception(
+            'you can have up to {user.MAX_REMINDERS} at a time. use "!delete <n>" to delete a reminder'
+        )
 
-    match = findall(r'^(?:(\d{1,2})y)?(?:(\d{1,2})M)?(?:(\d{1,5})d)?(?:(\d{1,5})h)?(?:(\d{1,5})m)?(?:(\d{1,5})s)?$', expr)
+    pattern = r'^(?:(\d{1,2})y)?(?:(\d{1,2})M)?(?:(\d{1,5})d)?(?:(\d{1,5})h)?(?:(\d{1,5})m)?(?:(\d{1,5})s)?$'
+    match = findall(pattern, expr)
 
     if not match or not any(match[0]):
         raise InvalidCommandArgumentsError('no match found for <expr>')
@@ -91,12 +96,12 @@ def remind_me(expr, note: Optional[str], message: Message):
 
     reminder = Reminder(
         user=user,
-        note=note or 'no message', 
+        note=note or 'no message',
         time_created=now,
         time_delta=delta.total_seconds(),
         remind_time=remind_time,
     )
-    
+
     session.add(reminder)
     session.commit()
 
@@ -165,7 +170,9 @@ def delete(n: int = maxsize, message: Message = None):
     user = get_or_create_user(message.user.nick)
 
     if n > len(user.reminders):
-        raise InvalidCommandArgumentsError(f"invalid <n>. number of reminders is currently {len(user.reminders)}")
+        raise InvalidCommandArgumentsError(
+            f"invalid <n>. number of reminders is currently {len(user.reminders)}"
+        )
 
     reminder = user.reminders[n-1]
 

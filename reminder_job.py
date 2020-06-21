@@ -35,7 +35,7 @@ class ReminderJob:
             return
 
         self._next_reminder = reminders[0].id
-    
+
     def _job(self):
         while True:
             time.sleep(1)  # avoid cpu hogging

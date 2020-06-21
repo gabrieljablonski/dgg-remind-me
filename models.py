@@ -8,7 +8,12 @@ from utils import format_datetime
 
 
 Base = declarative_base()
-engine = sa.create_engine('sqlite:///remindme.db', connect_args={'check_same_thread': False})
+engine = sa.create_engine(
+    'sqlite:///remindme.db',
+    connect_args={
+        'check_same_thread': False
+    }
+)
 Base.metadata.bind = engine
 SessionScoper = orm.scoped_session(orm.sessionmaker(bind=engine))
 
@@ -55,7 +60,7 @@ def get_or_create_user(nick):
 
     if result:
         return result[0]
-    
+
     user = User(nick=nick)
     session.add(user)
     session.commit()
@@ -72,8 +77,8 @@ class User(Base):
     reminder_on_next_join = sa.Column(sa.String)
 
     reminders = orm.relationship(
-        'Reminder', 
-        back_populates='user', 
+        'Reminder',
+        back_populates='user',
         order_by='Reminder.remind_time.asc()',
     )
 
