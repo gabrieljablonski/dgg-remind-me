@@ -173,13 +173,3 @@ def delete(n: int = maxsize, message: Message = None):
     session.commit()
 
     bot.reply(f"Successfully deleted reminder #{n}.")
-
-
-@bot.before_commands
-def before_commands(message, command, *args):
-    session.open()
-
-
-@bot.after_commands
-def after_commands(message, e, command, *args):
-    session.close()

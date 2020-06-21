@@ -50,18 +50,15 @@ class Session:
 session = Session()
 
 
-def get_or_create_user(nick, s=None):
-    if not s:
-        s = session
-
-    result = s.query(User).filter(User.nick == nick).all()
+def get_or_create_user(nick):
+    result = session.query(User).filter(User.nick == nick).all()
 
     if result:
         return result[0]
     
     user = User(nick=nick)
-    s.add(user)
-    s.commit()
+    session.add(user)
+    session.commit()
 
     return user
 
