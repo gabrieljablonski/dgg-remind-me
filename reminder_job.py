@@ -2,6 +2,7 @@ import time
 from typing import List
 from datetime import datetime, timedelta
 from threading import Thread
+from sqlalchemy.orm.exc import ObjectDeletedError
 
 from models import Session, session, User, Reminder
 from utils import format_datetime, delta_as_str
@@ -43,9 +44,15 @@ class ReminderJob:
             if not self._next_reminder:
                 continue
 
-            r = self._session.query(Reminder).get(self._next_reminder)
+            try:
+                r = self._session.query(Reminder).get(self._next_reminder)
+                if not r:
+                    raise ObjectDeletedError
+            except ObjectDeletedError:
+                self.check_next_reminder()
+                continue
 
-            if not r or now < r.remind_time:
+            if now < r.remind_time:
                 continue
 
             tc = r.time_created

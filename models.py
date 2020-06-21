@@ -77,7 +77,7 @@ class User(Base):
     reminders = orm.relationship(
         'Reminder', 
         back_populates='user', 
-        order_by='Reminder.remind_time.asc()'
+        order_by='Reminder.remind_time.asc()',
     )
 
     MAX_REMINDERS = 5
