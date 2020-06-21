@@ -1,2 +1,2 @@
-dgg-chat-bot==0.1.8a0
+dgg-chat-bot==0.1.10a0
 sqlalchemy==1.3.17
