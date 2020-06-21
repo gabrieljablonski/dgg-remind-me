@@ -42,4 +42,4 @@ def delta_as_str(delta: timedelta):
     if len(s) == 1:
         return s[0]
 
-    return f"{', '.join(s[:-1])}, and {s[-1]}"
+    return f"{', '.join(s[:-1])} and {s[-1]}"

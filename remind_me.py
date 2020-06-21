@@ -8,14 +8,20 @@ load_dotenv()
 setup_logger(INFO)
 
 dgg_auth_token = getenv('DGG_AUTH_TOKEN')
+
+greeting = "Hi {user}! I'm the reminder bot 🤖, I help you remember stuff."
 extra = 'More details at github.com/gabrieljablonski/dgg-remind-me.'
 
-remind_me_bot = DGGChatBot(dgg_auth_token, extra_help=extra)
+remind_me_bot = DGGChatBot(
+    dgg_auth_token, 
+    greeting=greeting, 
+    extra_help=extra
+)
 
 
 # watch out for cirular imports
+import bot_handlers
 import chat_handlers
-import command_handlers
 from models import setup_db
 from reminder_job import ReminderJob
 
