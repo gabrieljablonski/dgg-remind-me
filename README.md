@@ -3,7 +3,6 @@
 A bot that reminds you of stuff in the [destiny.gg](https://destiny.gg) chat.
 Built using the [`dgg-chat-bot`](https://github.com/gabrieljablonski/dgg-chat-bot) package.
 
-To use it, whisper `BotReminder` in chat with a command. Example: `/whisper BotReminder !help`. You can have up to 5 timed reminders registered at a time.
 
 ## Commands
 
