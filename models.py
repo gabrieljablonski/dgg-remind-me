@@ -9,7 +9,7 @@ from utils import format_datetime
 
 Base = declarative_base()
 engine = sa.create_engine(
-    'sqlite:///remindme.db',
+    'sqlite:///remindme.db?charset=utf8',
     connect_args={
         'check_same_thread': False
     }

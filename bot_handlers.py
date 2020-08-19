@@ -81,7 +81,7 @@ def next_time(note, message: Message):
     """
 
     user = get_or_create_user(message.user.nick)
-    user.reminder_on_next_join = note or 'no message'
+    user.reminder_on_next_join = note or 'no message.'
     session.commit()
 
     msg = f"All set! Next time you join I'll remind you"
@@ -155,7 +155,7 @@ def remind_me(expr, note: Optional[str], message: Message):
 
     reminder = Reminder(
         user=user,
-        note=note or 'no message',
+        note=note or 'no message.',
         time_created=now,
         time_delta=delta.total_seconds(),
         remind_time=remind_time,
@@ -224,7 +224,7 @@ def remind_me_on(expr, note: Optional[str], message: Message):
 
     reminder = Reminder(
         user=user,
-        note=note or 'no message',
+        note=note or 'no message.',
         time_created=now,
         time_delta=delta_sec,
         remind_time=remind_time,

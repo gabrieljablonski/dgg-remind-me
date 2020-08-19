@@ -66,7 +66,7 @@ class ReminderJob:
                 f"after {delta_as_str(td)} (on {format_datetime(rt, tz=tz)}) of"
             )
 
-            if r.note != 'no message':
+            if r.note != 'no message.':
                 msg = f"{msg} this: {r.note}"
             else:
                 msg = f"{msg} something, but you didn't specify a message."

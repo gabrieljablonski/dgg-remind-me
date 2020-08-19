@@ -13,7 +13,7 @@ def on_user_joined(joined: UserJoined):
 
     if user.reminder_on_next_join:
         msg = f"Hey {user.nick}! Last time you were here you asked me to remind you of"
-        if user.reminder_on_next_join == 'no message':
+        if user.reminder_on_next_join == 'no message.':
             msg = f"{msg} something on the next time you joined, but you didn't specify a message."
         else:
             msg = f"{msg} this next time you joined: {user.reminder_on_next_join}"
