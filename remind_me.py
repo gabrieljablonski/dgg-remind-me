@@ -19,7 +19,7 @@ remind_me_bot = DGGChatBot(
 )
 
 
-# watch out for cirular imports
+# watch out for circular imports
 import bot_handlers
 import chat_handlers
 from models import setup_db
