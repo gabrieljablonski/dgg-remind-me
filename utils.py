@@ -9,7 +9,7 @@ def format_datetime(dt: datetime = datetime.utcnow(), fmt='%Y-%m-%d %H:%M:%S', t
 
 
 def pluralize(val, name):
-    return f"{val} {name}{'s' if val > 1 else ''}"
+    return f"{val} {name}{'s' if val != 1 else ''}"
 
 
 def delta_as_str(delta: timedelta):
